@@ -1,20 +1,25 @@
-﻿// ITMO.CPP2023.Lesson02.Ex3.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
-
-#include <iostream>
+﻿#include <iostream>
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    constexpr int tenCoin = 10;
+    constexpr int fiveCoin = 5;
+    constexpr int twoCoin = 2;
+    constexpr int oneCoin = 1;
+    int numberOfTenCoins;
+    int numberOfFiveCoins;
+    int numberOfTwoCoins;
+    int numberOfOneCoins;
+    int sum;
+
+    std::cout << "Enter sum: ";
+    std::cin >> sum;
+
+    numberOfTenCoins = sum / tenCoin;
+    numberOfFiveCoins = sum % tenCoin / fiveCoin;
+    numberOfTwoCoins = (sum % tenCoin) % fiveCoin / twoCoin;
+    numberOfOneCoins = ((sum % tenCoin) % fiveCoin) % twoCoin / oneCoin;
+
+    std::cout << "Ten Coins\t" << "Five Coins\t" << "Two Coins\t" << "One Coins\n";
+    std::cout << numberOfTenCoins << "\t\t" << numberOfFiveCoins << "\t\t" << numberOfTwoCoins << "\t\t" << numberOfOneCoins;
 }
-
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
