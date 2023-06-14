@@ -1,20 +1,66 @@
-﻿// ITMO.CPP2023.Lesson04.Ex1.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+﻿#include <iostream>
+#include <cmath>
 
-#include <iostream>
+int MyRoot(double a, double b, double c, double& x1, double& x2);
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    double root1;
+    double root2;
+    double firstCoef;
+    double secondCoef;
+    double thirdCoef;
+    int flag;
+
+    std::cout << "Enter the coefficients of the quadratic equation\n";
+    std::cout << "a = ";
+    std::cin >> firstCoef;
+    std::cout << "b = ";
+    std::cin >> secondCoef;
+    std::cout << "c = ";
+    std::cin >> thirdCoef;
+
+    flag = MyRoot(firstCoef, secondCoef, thirdCoef, root1, root2);
+
+    if (flag == -1)
+    {
+        std::cout << "No roots";
+    }
+    else if (flag == 0)
+    {
+        std::cout << "One root x1 = x2 = " << root1;
+    }
+    else if (flag == 1)
+    {
+        std::cout << "Roots x1 = " << root1 << ", x2 = " << root2;
+    }
+    else
+    {
+        std::cout << "Error";
+    }
+
+    return 0;
 }
 
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
+int MyRoot(double a, double b, double c, double& x1, double& x2)
+{
+    double disc;
 
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
+    disc = b * b - 4 * a * c;
+
+    if (disc < 0)
+    {
+        return -1;
+    }
+    else if (disc == 0)
+    {
+        x1 = -b / (2 * a);
+        return 0;
+    }
+    else
+    {
+        x1 = (-b + std::sqrt(disc)) / (2 * a);
+        x2 = (-b - std::sqrt(disc)) / (2 * a);
+        return 1;
+    }
+}
